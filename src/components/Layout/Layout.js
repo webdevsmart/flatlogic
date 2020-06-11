@@ -9,7 +9,11 @@
 
 import React from 'react';
 import cx from 'classnames';
-import { Switch, Route, withRouter } from 'react-router';
+import { 
+  Switch, 
+  Route, 
+  withRouter 
+} from 'react-router-dom';
 
 import s from './Layout.module.scss';
 import Header from '../Header';

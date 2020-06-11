@@ -10,24 +10,44 @@ $opacity-variants: (10: 0.1, 20: 0.2, 30: 0.3, 40: 0.4, 50: 0.5, 60: 0.6, 70: 0.
 
 @include property-variants('.opacity', 'opacity', $opacity-variants);
 
-.fw-thin {
+.fw-roboto-thin {
+  font-weight: 100;
+}
+
+.fw-thin, .fw-roboto-light {
   font-weight: 300;
 }
 
-.fw-normal {
+.fw-normal, .fw-roboto-regular {
   font-weight: 400;
+}
+
+.fw-roboto-medium {
+  font-weight: 500;
 }
 
 .fw-semi-bold {
   font-weight: 600;
 }
 
-.fw-bold {
+.fw-bold, .fw-roboto-bold {
   font-weight: 700;
+}
+
+.fw-roboto-black {
+  font-weight: 900;
 }
 
 .fs-sm {
   font-size: $font-size-small;
+}
+
+.fs-lg {
+  font-size: $font-size-large;
+}
+
+.fs-xl {
+  font-size: $font-size-lg;
 }
 
 .text-default {

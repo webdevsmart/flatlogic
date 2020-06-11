@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import cx from 'classnames';
 import { withRouter, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { 
@@ -8,34 +7,18 @@ import {
   Button, 
   FormGroup, 
   Input, 
-  Label, 
   Row,
   Col,
   Form
 } from 'reactstrap';
-import FacebookIcon from '@material-ui/icons/Facebook';
-import GoogleLogin from 'react-google-login';
-import FacebookLogin from 'react-facebook-login';
-import s from './Login.module.scss';
+import s from './Signup.module.scss';
 import Widget from '../../components/Widget';
 import Footer from "../../components/Footer";
 import { loginUser } from '../../actions/user';
 import jwt from 'jsonwebtoken';
 import config from '../../config'
 
-const googleLoginSuccess = (response) => {
-  console.log(response.accessToken);
-}
-
-const googleLoginFail = (response) => {
-  console.log(response);
-}
-
-const responseFacebook = (response) => {
-  console.log(response);
-}
-
-class Login extends React.Component {
+class Signup extends React.Component {
   static propTypes = {
     dispatch: PropTypes.func.isRequired,
     isAuthenticated: PropTypes.bool,
@@ -103,83 +86,49 @@ class Login extends React.Component {
             <Col xs={{size: 10, offset: 1}} sm={{size: 6, offset: 3}} lg={{size:4, offset: 4}}>
               <p className="text-center">React Dashboard</p>
               <Widget className={s.widget}>
-                <h2 className="mt-0 text-center text-primary">Sign In</h2>
+                <h2 className="mt-0 text-center">Sign In</h2>
+                <p className="fs-sm text-muted">
+                  User your username and password to sign in<br />
+                  Don&#39;t have an account? Sign up now!
+                </p>
                 <Form className="mt" onSubmit={this.doLogin}>
                   {this.props.errorMessage && (
                     <Alert size="sm" color="danger">
                       {this.props.errorMessage}
                     </Alert>
                   )}
-                  <FormGroup className="mb-4">
+                  <FormGroup className="form-group">
                     <Input
-                      className=""
+                      className="no-border"
                       value={this.state.login}
                       onChange={this.changeLogin}
                       type="text"
                       required
                       name="username"
-                      placeholder="Email*"
+                      placeholder="Username"
                     />
                   </FormGroup>
-                  <FormGroup className="mb-2">
+                  <FormGroup>
                     <Input
-                      className=""
+                      className="no-border"
                       value={this.state.password}
                       onChange={this.changePassword}
                       type="password"
                       required
                       name="password"
-                      placeholder="Password*"
+                      placeholder="Password"
                     />
                   </FormGroup>
-                  <div className="d-flex justify-content-between align-items-center mb-4">
-                    <div className="d-flex align-items-center">
-                      <div className="abc-checkbox pl-2">
-                        <Input id="input-checkbox" type="checkbox" />
-                        <Label for="input-checkbox" />
-                      </div>
-                      <span className="fs-sm fw-roboto-regular">Remember me</span>
+                  <div className="d-flex justify-content-between align-items-center">
+                    <a href="#" className="fs-sm">Trouble with account?</a> {/* eslint-disable-line */}
+                    <div>
+                      <Button color="default" size="sm">
+                        Create an account
+                      </Button>
+                      <Button color="success" size="sm" type="submit">
+                        {this.props.isFetching ? 'Loading...' : 'Login'}
+                      </Button>
                     </div>
-                    <a href="#" className="fw-roboto-regular">Forgot Password?</a> {/* eslint-disable-line */}
-                  </div>
-                  
-                  <div className="px-3 mb-4">
-                    <Button className="text-uppercase text-body fs-lg" block color="primary" size="sm" type="submit" style={{"letterSpacing": ".07rem"}}>
-                      {this.props.isFetching ? 'Loading...' : '+ sign in'}
-                    </Button>
-                  </div>
-
-                  <p className="mb-2 text-center">
-                    or sign up with
-                  </p>
-
-                  <ul className={cx('d-flex justify-content-center', s.social)} style={{"marginBottom": "4.5rem"}}>
-                    <li className="facebook">
-                      <FacebookLogin
-                        appId="1088597931155576"
-                        autoLoad={true}
-                        fields="name,email,picture"
-                        textButton=""
-                        scope="public_profile,user_friends,user_actions.books"
-                        icon={<FacebookIcon/>}
-                        cssClass="facebook-login"
-                        callback={responseFacebook}
-                      />
-                    </li>
-                    <li className="google">
-                      <GoogleLogin
-                        clientId="465669180733-qn10t5c2ebud38t9lmfvcrifsbokhs0v.apps.googleusercontent.com"
-                        buttonText=""
-                        onSuccess={googleLoginSuccess}
-                        onFailure={googleLoginFail}
-                        className="google-login"
-                        cookiePolicy={'single_host_origin'}
-                      />
-                    </li>
-                  </ul>
-
-                  <div className="text-center">
-                    <a href="#" className="fs-lg fw-roboto-medium">Don't Have an Account? Sign Up Now</a>
                   </div>
                 </Form>
               </Widget>
@@ -199,5 +148,5 @@ function mapStateToProps(state) {
     };
 }
 
-export default withRouter(connect(mapStateToProps)(Login));
+export default withRouter(connect(mapStateToProps)(Signup));
 

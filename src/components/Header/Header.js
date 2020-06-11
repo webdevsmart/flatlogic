@@ -24,7 +24,7 @@ import {
   InputGroup,
   InputGroupAddon,
 } from 'reactstrap';
-import { NavLink } from 'react-router-dom';
+import { NavLink, Redirect } from 'react-router-dom';
 
 import Icon from '../Icon';
 
@@ -52,6 +52,7 @@ class Header extends React.Component {
 
   doLogout = () => {
     this.props.dispatch(logoutUser());
+    return (<Redirect to="/login"/>);
   }
 
   render() {

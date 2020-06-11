@@ -3,7 +3,7 @@ import cx from 'classnames';
 import PropTypes from 'prop-types';
 import { NavLink } from 'react-router-dom';
 import { Collapse } from 'reactstrap';
-import { Route } from 'react-router';
+import { Route } from 'react-router-dom';
 
 import Icon from '../../Icon/Icon';
 

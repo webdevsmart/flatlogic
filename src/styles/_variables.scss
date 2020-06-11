@@ -13,10 +13,10 @@
  $font-size-base: 1rem;
  $font-size-lg: 1.25rem !default;
  $font-size-sm: 0.875rem !default;
- $font-size-large: 1.1rem;
- $font-size-small: 0.9rem;
- $font-size-index: 0.7rem;
- $font-family-base: 'Nunito', 'HelveticaNeue-Light', sans-serif;
+ $font-size-large: 1.125rem;
+ $font-size-small: 0.875rem;
+ $font-size-index: 0.75rem;
+ $font-family-base: 'Roboto', 'HelveticaNeue-Light', sans-serif;
  
  $line-height-computed: 1.5rem;
  
@@ -44,7 +44,17 @@
  $gray-light: $gray-100;
  $text-muted: $gray-300 !default;
  
+/*
  $brand-primary:         #3754a5 !default; // #337ab7
+ $brand-secondary:       #beccfd !default;
+ $brand-success:         #1ab394 !default;
+ $brand-info:            #5d80f9 !default;
+ $brand-warning:         #f3c363 !default;
+ $brand-danger:          #eb3349 !default;
+* Overrided 
+* ======================================================================== */
+
+ $brand-primary:         #00BCD4 !default; 
  $brand-secondary:       #beccfd !default;
  $brand-success:         #1ab394 !default;
  $brand-info:            #5d80f9 !default;
@@ -66,7 +76,7 @@
  );
  
  $text-color:                     $gray-700;
- $link-color:                     #337ab7;
+ $link-color:                     #00ACC3;
  
  $state-success-text:             $brand-success !default;
  $state-success-bg:               lighten($brand-success, 70%) !default;
@@ -165,3 +175,5 @@
  
  $enable-rounded: false;
  
+ // Button
+ $button-border-radius: .53rem;

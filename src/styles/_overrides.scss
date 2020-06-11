@@ -103,6 +103,12 @@
 .btn-inverse {
   @include button-variant($btn-inverse-color, $btn-inverse-bg, $btn-inverse-border);
 }
+.btn {
+  border-radius: $button-border-radius;
+  padding-top: .5rem;
+  padding-bottom: .5rem;
+  font-weight: 500;
+}
 
 // Alerts
 

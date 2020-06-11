@@ -1,5 +1,5 @@
 import React from 'react';
-import { Switch, Route, withRouter } from 'react-router';
+import { Switch, Route, withRouter } from 'react-router-dom';
 
 import PostList from './list/PostList';
 import PostNew from './new/PostNew';

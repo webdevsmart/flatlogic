@@ -1,7 +1,7 @@
 @import '../../styles/app';
 
 .root {
-  padding-top: 25vh;
+  padding-top: 20vh;
 }
 
 .widget {
@@ -11,5 +11,51 @@
 
   :global .form-control {
     font-size: 14px;
+  }
+}
+
+.social {
+  li {
+    width: 50px;
+    height: 50px;
+  }
+  li + li {
+    margin-left: 1rem;
+  }
+  :global li.facebook {
+    span {
+      opacity: 1;
+      .facebook-login {
+        width: 50px;
+        height: 50px;
+        padding: 0;
+        margin: 0;
+        border: none;
+        svg {
+          width: 50px;
+          height: 50px;
+          color: #2e428b;
+          background-color: white;
+        }
+      }
+      .facebook-login:hover {
+        svg {
+          opacity: .8;
+        }
+      }
+    }
+  }
+  :global li.google {
+    .google-login {
+      box-shadow: none !important;
+      border: none !important;
+      div {
+        padding: 13px !important;
+        margin: 0 !important;
+        svg {
+          transform: scale(2);
+        }
+      }
+    }
   }
 }
