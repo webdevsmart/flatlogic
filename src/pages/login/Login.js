@@ -100,8 +100,9 @@ class Login extends React.Component {
         return (
           <div className={s.root}>
           <Row>
-            <Col xs={{size: 10, offset: 1}} sm={{size: 6, offset: 3}} lg={{size:4, offset: 4}}>
-              <p className="text-center">React Dashboard</p>
+            {/* <Col xs={{size: 10, offset: 1}} sm={{size: 6, offset: 3}} lg={{size:4, offset: 4}}> */}
+            <div className="mx-auto" style={{"width": "432px"}}>
+              <p className="text-center">Shoclef</p>
               <Widget className={s.widget}>
                 <h2 className="mt-0 text-center text-primary">Sign In</h2>
                 <Form className="mt" onSubmit={this.doLogin}>
@@ -153,7 +154,7 @@ class Login extends React.Component {
                     or sign up with
                   </p>
 
-                  <ul className={cx('d-flex justify-content-center', s.social)} style={{"marginBottom": "4.5rem"}}>
+                  <ul className={cx('d-flex justify-content-center', s.social)} style={{"marginBottom": "4rem"}}>
                     <li className="facebook">
                       <FacebookLogin
                         appId="1088597931155576"
@@ -183,7 +184,8 @@ class Login extends React.Component {
                   </div>
                 </Form>
               </Widget>
-            </Col>
+            {/* </Col> */}
+            </div>
           </Row>
           <Footer className="text-center" />
           </div>

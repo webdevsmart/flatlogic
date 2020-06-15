@@ -1,17 +1,24 @@
 import React from 'react';
 import {connect} from 'react-redux';
+import cx from 'classnames';
 import {withRouter, Link} from 'react-router-dom';
-
-import Icon from '../Icon';
+import HomeIcon from '@material-ui/icons/Home';
+import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import LinksGroup from './LinksGroup/LinksGroup';
 
 import s from './Sidebar.module.scss';
 
 const Sidebar = () => (
-  <nav className={s.root}>
-    <header className={s.logo}>
-      <Link to="/app/main">
-        <Icon glyph="logo" />
+  <nav className={cx(s.root, "border-right border-primary")}>
+    <header className={cx(s.sidebarHome, "d-flex align-items-center border-bottom border-secondary")}>
+      <Link to="/app/seller-info" className={cx(s.menuItemHome, "d-flex w-100 align-items-center justify-content-between fw-Roboto-Regular fs-sm")}>
+        <div className="d-flex">
+          <HomeIcon fontSize="small" className="mr-2"/>
+          <span>Seller Info</span>
+        </div>
+        <div className="d-flex">
+          <ChevronRightIcon fontSize="small"></ChevronRightIcon>
+        </div>
       </Link>
     </header>
     <ul className={s.nav}>
@@ -19,25 +26,30 @@ const Sidebar = () => (
         header="Dashboard"
         headerLink="/app/main"
         glyph="dashboard"
+        className="menu-item"
       />
       <LinksGroup
         header="Typography"
         headerLink="/app/typography"
         glyph="typography"
+        className="menu-item"
       />
       <LinksGroup
         header="Tables Basic"
         headerLink="/app/tables"
         glyph="tables"
+        className="menu-item"
       />
       <LinksGroup
         header="Notifications"
         headerLink="/app/notifications"
         glyph="notifications"
+        className="menu-item"
       />
       <LinksGroup
         header="Components"
         headerLink="/app/components"
+        className="menu-item"
         childrenLinks={[
           {
             name: 'Buttons',

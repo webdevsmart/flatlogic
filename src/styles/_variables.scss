@@ -31,19 +31,19 @@
  
  $glyphicons-halflings-font-path: '../fonts/glyphicons' !default;
  
- $gray-100: #f9f6f2;
- $gray-200: #efedea;
- $gray-300: #cccbca;
- $gray-400: #ccc;
- $gray-500: #666;
- $gray-600: #6c757d;
- $gray-700: #4d4d4d;
- $gray-800: #343a40;
- $gray-900: #212529;
+ $gray-100: #fafafa;
+ $gray-200: #f6f6f6;
+ $gray-300: #eaeaea;
+ $gray-400: #d4d4d4;
+ $gray-500: #c4c4c4;
+ $gray-600: #959595;
+ $gray-700: #666666;
+ $gray-800: #525252;
+ $gray-900: #333333;
  
  $gray-light: $gray-100;
  $text-muted: $gray-300 !default;
- 
+
 /*
  $brand-primary:         #3754a5 !default; // #337ab7
  $brand-secondary:       #beccfd !default;
@@ -55,7 +55,7 @@
 * ======================================================================== */
 
  $brand-primary:         #00BCD4 !default; 
- $brand-secondary:       #beccfd !default;
+ $brand-secondary:       #0097ab !default;
  $brand-success:         #1ab394 !default;
  $brand-info:            #5d80f9 !default;
  $brand-warning:         #f3c363 !default;
@@ -145,7 +145,10 @@
  $navbar-border-radius: 0;
  $navbar-margin-bottom: -$navbar-height !default;
  
- $sidebar-width-open: 200px;
+ $topbar-bg-color: #f2fdff;
+ $topbar-height: 70px;
+
+ $sidebar-width-open: 240px;
  $sidebar-transition-time: 0.3s !default;
  
  $sidebar-bg-color: #fff;

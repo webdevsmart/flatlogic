@@ -1,0 +1,35 @@
+@import '../../styles/app';
+
+.root {
+  position: fixed;
+  height: $topbar-height;
+  width: 100%;
+  right: 0;
+  left: 0;
+  top: 0;
+  background-color: $topbar-bg-color;
+  z-index: 9;
+}
+
+.topbarAvatar {
+  width: 40px;
+  height: 40px;
+}
+
+.logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: $navbar-height;
+  width: 100%;
+  background: $logo-gradient;
+
+  a img {
+    width: $sidebar-width-open - 60px;
+  }
+}
+
+.nav {
+  padding: 10px 0;
+  overflow-y: auto;
+}

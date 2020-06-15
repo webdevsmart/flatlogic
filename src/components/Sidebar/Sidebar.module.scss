@@ -4,23 +4,21 @@
   width: $sidebar-width-open;
   position: fixed;
   left: 0;
-  top: 0;
+  top: $topbar-height;
   bottom: 0;
   background-color: $sidebar-bg-color;
-  color: $sidebar-color;
 }
 
-.logo {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: $navbar-height;
-  width: 100%;
-  background: $logo-gradient;
+.sidebarHome {
+  height: 52px;
+  background-color: rgba($brand-secondary, 0.6);
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
 
-  a img {
-    width: $sidebar-width-open - 60px;
-  }
+.menuItemHome {
+  color: rgba(black, 0.6);
+  text-decoration: none !important;
 }
 
 .nav {

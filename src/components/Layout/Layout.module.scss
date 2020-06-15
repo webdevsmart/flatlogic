@@ -9,6 +9,7 @@
   position: absolute;
   left: 0;
   right: 0;
+  top: $topbar-height;
   transition: left 0.3s ease-in-out, right 0.3s ease-in-out;
 
   @include media-breakpoint-up(md) {

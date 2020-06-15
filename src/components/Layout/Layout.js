@@ -33,6 +33,7 @@ import Notifications from '../../pages/notifications'
 import Posts from '../../pages/posts'
 import Profile from '../../pages/profile'
 import Privacy from '../../pages/privacy'
+import Topbar from '../Topbar/Topbar';
 
 class Layout extends React.Component {
   constructor(props) {
@@ -46,6 +47,7 @@ class Layout extends React.Component {
   render() {
     return (
       <div className={s.root}>
+        <Topbar />
         <Sidebar />
         <div
           className={cx(s.wrap, {[s.sidebarOpen]: this.state.sidebarOpen})}
