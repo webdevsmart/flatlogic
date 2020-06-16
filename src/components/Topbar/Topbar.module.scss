@@ -9,6 +9,35 @@
   top: 0;
   background-color: $topbar-bg-color;
   z-index: 9;
+
+  :global {
+    .dropdown-menu {
+      border: none;
+      margin-top: 0.7rem;
+    }
+
+    .dropdown-item {
+      &:active {
+        background-color: $gray-200;
+        color: $text-color;
+      }
+
+      &:focus {
+        outline: none;
+      }
+
+      a {
+        display: block;
+        color: $text-color;
+
+        &:hover {
+          color: $text-color;
+          text-decoration: none;
+          cursor: default;
+        }
+      }
+    }
+  }
 }
 
 .topbarAvatar {
@@ -16,20 +45,38 @@
   height: 40px;
 }
 
-.logo {
+.headerIcon {
   display: flex;
-  justify-content: center;
   align-items: center;
-  height: $navbar-height;
-  width: 100%;
-  background: $logo-gradient;
+  position: relative;
 
-  a img {
-    width: $sidebar-width-open - 60px;
+  &:nth-child(n + 2) {
+    margin-left: 0.5rem;
   }
-}
 
-.nav {
-  padding: 10px 0;
-  overflow-y: auto;
+  &:nth-child(2) {
+    span {
+      right: -1px;
+    }
+  }
+
+  img {
+    max-height: 1.65rem;
+    width: 1.65rem;
+  }
+
+  span {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 12px;
+    right: -6px;
+    color: $white;
+    font-size: 0.55rem;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background-color: theme-color('danger');
+  }
 }

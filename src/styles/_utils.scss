@@ -46,8 +46,16 @@ $opacity-variants: (10: 0.1, 20: 0.2, 30: 0.3, 40: 0.4, 50: 0.5, 60: 0.6, 70: 0.
   font-size: $font-size-large;
 }
 
-.fs-xl {
+.fs-xl, h1 {
   font-size: $font-size-lg;
+}
+
+.fs-h2, h2 {
+  font-size: $font-size-h2;
+}
+
+.fs-h3, h3 {
+  font-size: $font-size-h3;
 }
 
 .text-default {

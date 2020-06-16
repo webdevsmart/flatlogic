@@ -34,6 +34,7 @@ import Posts from '../../pages/posts'
 import Profile from '../../pages/profile'
 import Privacy from '../../pages/privacy'
 import Topbar from '../Topbar/Topbar';
+import SellerInfo from '../../pages/seller-info/SellerInfo';
 
 class Layout extends React.Component {
   constructor(props) {
@@ -72,6 +73,10 @@ class Layout extends React.Component {
               <Route path="/app/components/charts" exact component={Charts} />
               <Route path="/app/components/icons" exact component={Icons} />
               <Route path="/app/components/maps" exact component={Maps} />
+
+              {/* Seller Profile */}
+              <Route path="/app/seller-info" exact component={SellerInfo} />
+
               <Route component={NotFound} />
             </Switch>
           </main>

@@ -17,6 +17,13 @@
  $font-size-small: 0.875rem;
  $font-size-index: 0.75rem;
  $font-family-base: 'Roboto', 'HelveticaNeue-Light', sans-serif;
+
+ $font-size-h1: 2.375rem;
+ $font-size-h2: 1.875rem;
+ $font-size-h3: 1.5rem;
+ $font-size-h4: $font-size-lg;
+ $font-size-h5: $font-size-large;
+ $font-size-h6: $font-size-base;
  
  $line-height-computed: 1.5rem;
  
@@ -123,7 +130,7 @@
  
  $grid-float-breakpoint: 0;
  
- $body-bg: $gray-100;
+ $body-bg: $gray-200;
  
  /*
   * Media queries breakpoints
@@ -140,10 +147,7 @@
  $content-padding-horizontal: 30px;
  $content-padding-vertical: 40px;
  
- $navbar-bg-color: #fff;
- $navbar-height:  75px !default;
- $navbar-border-radius: 0;
- $navbar-margin-bottom: -$navbar-height !default;
+ $navbar-height:  52px !default;
  
  $topbar-bg-color: #f2fdff;
  $topbar-height: 70px;
@@ -151,19 +155,17 @@
  $sidebar-width-open: 240px;
  $sidebar-transition-time: 0.3s !default;
  
- $sidebar-bg-color: #fff;
+ $sidebar-bg-color: $gray-200;
  $sidebar-color: #4d4d4d;
  
  $breadcrumb-separator: '>';
  $breadcrumb-padding-horizontal: 0;
  $breadcrumb-bg: transparent;
- 
- $badge-font-weight: 600;
- 
  $breadcrumb-divider: '>';
  $breadcrumb-padding-y: 0;
  $breadcrumb-padding-x: 0;
- $breadcrumb-bg: transparent;
+ 
+ $badge-font-weight: 600;
  
  $widget-bg: #fff;
  $widget-title-color: #444;

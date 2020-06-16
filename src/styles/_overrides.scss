@@ -5,24 +5,6 @@
   padding-right: 30px;
 }
 
-// Navbar
-
-.navbar {
-  border: none;
-  height: $navbar-height;
-  border-radius: $navbar-border-radius;
-  margin-bottom: $navbar-margin-bottom;
-  padding: 0.5rem 2.25rem;
-}
-
-@media (min-width: $grid-float-breakpoint) {
-  .navbar-right {
-    .dropdown-menu {
-      left: 0;
-    }
-  }
-}
-
 // Nav
 
 .nav {
@@ -60,8 +42,8 @@
 // Breadcrumb
 
 .breadcrumb {
-  margin-top: -15px;
-  font-size: $font-size-small;
+  font-size: $font-size-h3;
+  margin: 0;
 
   > .active {
     font-weight: 600;
@@ -220,4 +202,39 @@ pre {
       border-top: none;
     }
   }
+}
+
+// Sidebar Menu Item Home
+.menu-item-home {
+  color: rgba(black, 0.6);
+  text-decoration: none !important;
+  height: $navbar-height;
+  background-color: rgba($brand-secondary, 0.35);
+  padding-left: 2rem;
+  padding-right: 2rem;
+
+  &.active {
+    background-color: rgba($brand-secondary, 0.6);
+  }
+}
+
+// Sidebar Category
+.category-item {
+  padding-left: 1.5rem;
+  color: rgba(black, .3);
+  font-size: .875rem;
+  margin-bottom: 1rem;
+}
+
+.menu-item {
+  margin-bottom: 1rem;
+}
+
+// Sidebar menu divider
+.menu-divider {
+  border-bottom: 1px solid $brand-secondary;
+  margin-top: 0;
+  margin-left: 1.5rem;
+  margin-right: 2.25rem;
+  margin-bottom: 1rem;
 }

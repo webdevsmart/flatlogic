@@ -1,9 +1,11 @@
 @import '../../../styles/app';
 
 .headerLink {
+  font-size: $font-size-small;
+
   a {
     display: flex;
-    color: $gray-500;
+    color: rgba(black, .6);
     align-items: center;
     text-decoration: none;
     cursor: pointer;
@@ -16,14 +18,15 @@
   }
 
   > a {
+    height: 1.5rem;
+    padding-left: 1.25rem;
+    padding-right: 1.875rem;
     position: relative;
-    padding: 0 15px;
-    line-height: 55px;
     justify-content: space-between;
 
     &:hover {
       font-weight: $font-weight-thin;
-      background-color: $gray-100;
+      // background-color: $gray-100;
     }
 
     img {
@@ -44,8 +47,11 @@
 }
 
 .headerLinkActive {
+  background: rgba(#0097A7, .5);
+  mix-blend-mode: multiply;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+
   span {
-    color: $brand-danger;
     font-weight: $font-weight-semi-bold;
   }
 }
@@ -63,7 +69,7 @@
 
   ul {
     padding-left: 0;
-    font-size: $font-size-small;
+    
 
     li {
       padding: 3px 0;

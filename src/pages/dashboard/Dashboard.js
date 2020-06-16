@@ -9,8 +9,6 @@ import {
   Alert,
   Button,
   ButtonGroup,
-  Breadcrumb,
-  BreadcrumbItem,
   Progress,
   Badge,
   ListGroup,
@@ -64,10 +62,7 @@ class Dashboard extends Component {
   render() {
     return (
       <div className={s.root}>
-        <Breadcrumb>
-          <BreadcrumbItem>YOU ARE HERE</BreadcrumbItem>
-          <BreadcrumbItem active>Dashboard</BreadcrumbItem>
-        </Breadcrumb>
+        
         <h1 className="mb-lg">Dashboard</h1>
         <Row>
           <Col sm={12} md={6}>

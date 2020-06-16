@@ -1,17 +1,18 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import cx from 'classnames';
-import {withRouter, Link} from 'react-router-dom';
+import {withRouter, NavLink} from 'react-router-dom';
 import HomeIcon from '@material-ui/icons/Home';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
-import LinksGroup from './LinksGroup/LinksGroup';
 
+import LinksGroup from './LinksGroup/LinksGroup';
+import Category from './Category/Category';
 import s from './Sidebar.module.scss';
 
 const Sidebar = () => (
   <nav className={cx(s.root, "border-right border-primary")}>
-    <header className={cx(s.sidebarHome, "d-flex align-items-center border-bottom border-secondary")}>
-      <Link to="/app/seller-info" className={cx(s.menuItemHome, "d-flex w-100 align-items-center justify-content-between fw-Roboto-Regular fs-sm")}>
+    <header className={cx(s.sidebarHome, "d-flex border-bottom border-secondary")}>
+      <NavLink to="/app/seller-info" className="menu-item-home d-flex w-100 align-items-center justify-content-between fw-Roboto-Regular fs-sm" activeClassName="active" exact>
         <div className="d-flex">
           <HomeIcon fontSize="small" className="mr-2"/>
           <span>Seller Info</span>
@@ -19,9 +20,61 @@ const Sidebar = () => (
         <div className="d-flex">
           <ChevronRightIcon fontSize="small"></ChevronRightIcon>
         </div>
-      </Link>
+      </NavLink>
     </header>
     <ul className={s.nav}>
+
+      {/* Products Category */}
+      <Category 
+        name="Products" 
+        className="category-item"
+      />
+      <LinksGroup
+        header="Import Products"
+        headerLink="/app/products/import-products"
+        className="menu-item"
+      />
+      <LinksGroup
+        header="Manage Products"
+        headerLink="/app/products/manage-products"
+        className="menu-item"
+      />
+      <LinksGroup
+        header="Manage Livestream"
+        headerLink="/app/products/manage-livestream"
+        className="menu-item"
+      />
+      <hr className="menu-divider" />
+
+      {/* Products Category */}
+      <Category 
+        name="Order Management" 
+        className="category-item"
+      />
+      <LinksGroup
+        header="Orders"
+        headerLink="/app/order-management/orders"
+        className="menu-item"
+      />
+      <LinksGroup
+        header="Invoices"
+        headerLink="/app/order-management/invoices"
+        className="menu-item"
+      />
+      <hr className="menu-divider" />
+
+      {/* Products Category */}
+      <Category 
+        name="Shipment Management" 
+        className="category-item"
+      />
+      <LinksGroup
+        header="Shipments"
+        headerLink="/app/shipments-management/shipments"
+        className="menu-item"
+      />
+      <hr className="menu-divider" />
+
       <LinksGroup
         header="Dashboard"
         headerLink="/app/main"

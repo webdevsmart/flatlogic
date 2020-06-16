@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import { NavLink } from 'react-router-dom';
 import { Collapse } from 'reactstrap';
 import { Route } from 'react-router-dom';
+import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 
 import Icon from '../../Icon/Icon';
 
@@ -46,9 +47,12 @@ class LinksGroup extends Component {
             activeClassName={s.headerLinkActive}
             exact
           >
-            <div>
-              {glyph && <Icon glyph={glyph} />}
-              <span>{header}</span>
+            <div className="pl-3 w-100 d-flex align-items-center justify-content-between">
+              <div>
+                {glyph && <Icon glyph={glyph} />}
+                <span>{header}</span>
+              </div>
+              <ChevronRightIcon fontSize="small"></ChevronRightIcon>
             </div>
           </NavLink>
         </li>

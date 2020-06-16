@@ -13,22 +13,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {
   Navbar,
-  Nav,
-  NavItem,
-  Button,
-  Dropdown,
-  DropdownToggle,
-  DropdownMenu,
-  DropdownItem,
-  Input,
-  InputGroup,
-  InputGroupAddon,
+  Breadcrumb,
+  BreadcrumbItem,
 } from 'reactstrap';
 import { NavLink, Redirect } from 'react-router-dom';
 
-import Icon from '../Icon';
-
-import photo from '../../images/photo.jpg';
 import { logoutUser } from '../../actions/user';
 import s from './Header.module.scss';
 
@@ -58,62 +47,11 @@ class Header extends React.Component {
   render() {
     const {isOpen} = this.state;
     return (
-      <Navbar className={s.root}>
-        <Nav>
-          <NavItem
-            className={cx('visible-xs mr-4 d-sm-up-none', s.headerIcon, s.sidebarToggler)}
-            href="#"
-            onClick={this.props.sidebarToggle}
-          >
-            <i className="fa fa-bars fa-2x text-muted" />
-          </NavItem>
-          <NavItem>
-            <InputGroup>
-              <Input placeholder="Search for..." />
-              <InputGroupAddon addonType="append" className="px-2">
-                <i className="fa fa-search" />
-              </InputGroupAddon>
-            </InputGroup>
-          </NavItem>
-        </Nav>
-        <Nav className="ml-auto">
-          <NavItem className={cx('', s.headerIcon)}>
-            <Button>
-              <Icon glyph="mail"/>
-              <span>8</span>
-            </Button>
-          </NavItem>
-          <NavItem className={cx('', s.headerIcon)}>
-            <Button>
-              <Icon glyph="notification"/>
-              <span>13</span>
-            </Button>
-          </NavItem>
-          <NavItem className={cx('', s.headerIcon)}>
-            <Button>
-              <Icon glyph="settings"/>
-            </Button>
-          </NavItem>
-          <Dropdown isOpen={isOpen} toggle={this.toggleDropdown}>
-            <DropdownToggle nav>
-              <img className={cx('rounded-circle mr-sm', s.adminPhoto)} src={photo} alt="administrator" />
-              <span className="text-body">Administrator</span>
-              <i className={cx('fa fa-angle-down ml-sm', s.arrow, {[s.arrowActive]: isOpen})} />
-            </DropdownToggle>
-            <DropdownMenu style={{width: '100%'}}>
-              <DropdownItem>
-                <NavLink to="/app/posts">Posts</NavLink>
-              </DropdownItem>
-              <DropdownItem>
-                <NavLink to="/app/profile">Profile</NavLink>
-              </DropdownItem>
-              <DropdownItem onClick={this.doLogout}>
-                Logout
-              </DropdownItem>
-            </DropdownMenu>
-          </Dropdown>
-        </Nav>
-      </Navbar>
+      <header className={cx(s.root, "d-flex align-items-center border-bottom border-secondary container-fluid")}>
+        <Breadcrumb tag="nav" listTag="ul">
+          <BreadcrumbItem active className="text-primary">Seller Information</BreadcrumbItem>
+        </Breadcrumb>
+      </header>
     );
   }
 }
