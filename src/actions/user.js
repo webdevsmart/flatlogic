@@ -1,3 +1,6 @@
+import gql from 'graphql-tag';
+import { useMutation } from '@apollo/react-hooks';
+
 import appConfig from '../config';
 
 export const LOGIN_REQUEST = 'LOGIN_REQUEST';
@@ -6,6 +9,12 @@ export const LOGIN_FAILURE = 'LOGIN_FAILURE';
 export const LOGOUT_REQUEST = 'LOGOUT_REQUEST';
 export const LOGOUT_SUCCESS = 'LOGOUT_SUCCESS';
 export const LOGOUT_FAILURE = 'LOGOUT_FAILURE';
+
+const MUTATION_LOGIN = gql`
+  mutation generateAccessToken($data: Object!) {
+    generateAccessToken(data: $data)
+  }
+`;
 
 function requestLogin(creds) {
   return {
@@ -60,6 +69,36 @@ export function logoutUser() {
   };
 }
 
+export function graphqlLoginUser(creds) {
+
+  // return dispatch => {
+  //   // We dispatch requestLogin to kickoff the call to the API
+  //   dispatch(requestLogin(creds));
+  //   if (process.env.NODE_ENV === "development") {
+  //     return fetch('/login', config)
+  //       .then(response => response.json().then(user => ({ user, response })))
+  //       .then(({ user, response }) => {
+  //         if (!response.ok) {
+  //           // If there was a problem, we want to
+  //           // dispatch the error condition
+  //           dispatch(loginError(user.message));
+  //           return Promise.reject(user);
+  //         }
+  //         // in posts create new action and check http status, if malign logout
+  //         // If login was successful, set the token in local storage
+  //         localStorage.setItem('id_token', user.id_token);
+  //         // Dispatch the success action
+  //         dispatch(receiveLogin(user));
+  //         return Promise.resolve(user);
+  //       })
+  //       .catch(err => console.error('Error: ', err));
+  //   } else {
+  //     localStorage.setItem('id_token', appConfig.id_token);
+  //     dispatch(receiveLogin({ id_token: appConfig.id_token }))
+  //   }
+  // };
+}
+
 export function loginUser(creds) {
   const config = {
     method: 'POST',
@@ -67,31 +106,32 @@ export function loginUser(creds) {
     credentials: 'include',
     body: `login=${creds.login}&password=${creds.password}`,
   };
-  
+
   return dispatch => {
     // We dispatch requestLogin to kickoff the call to the API
     dispatch(requestLogin(creds));
-    if(process.env.NODE_ENV === "development") {
-    return fetch('/login', config)
-      .then(response => response.json().then(user => ({ user, response })))
-      .then(({ user, response }) => {
-        if (!response.ok) {
-          // If there was a problem, we want to
-          // dispatch the error condition
-          dispatch(loginError(user.message));
-          return Promise.reject(user);
-        }
-        // in posts create new action and check http status, if malign logout
-        // If login was successful, set the token in local storage
-        localStorage.setItem('id_token', user.id_token);
-        // Dispatch the success action
-        dispatch(receiveLogin(user));
-        return Promise.resolve(user);
-      })
-      .catch(err => console.error('Error: ', err));
+    if (process.env.NODE_ENV === "development") {
+      return fetch('/login', config)
+        .then(response => response.json().then(user => ({ user, response })))
+        .then(({ user, response }) => {
+          if (!response.ok) {
+            // If there was a problem, we want to
+            // dispatch the error condition
+            dispatch(loginError(user.message));
+            return Promise.reject(user);
+          }
+          // in posts create new action and check http status, if malign logout
+          // If login was successful, set the token in local storage
+          localStorage.setItem('id_token', user.id_token);
+          // Dispatch the success action
+          dispatch(receiveLogin(user));
+          return Promise.resolve(user);
+        })
+        .catch(err => console.error('Error: ', err));
     } else {
       localStorage.setItem('id_token', appConfig.id_token);
-      dispatch(receiveLogin({id_token: appConfig.id_token}))
+      dispatch(receiveLogin({ id_token: appConfig.id_token }))
     }
   };
 }
+

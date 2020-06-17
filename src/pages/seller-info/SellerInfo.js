@@ -1,10 +1,35 @@
 import React, {Component} from 'react';
+import cx from 'classnames';
 import { connect } from 'react-redux';
+import { 
+  Alert, 
+  Form
+} from 'reactstrap';
+
+import Widget from '../../components/Widget';
+import s from './SellerInfo.module.scss';
 
 class SellerInfo extends Component {
+  saveChanges = (e) => {
+    this.props.dispatch(
+    );
+    e.preventDefault();
+  }
+
   render() {
     return (
-      <h3>Complete Your Seller Profile</h3>
+      <div className={s.root}>
+        <Form onSubmit={this.saveChanges}>
+          <Widget className="s.formData">
+            {this.props.errorMessage && (
+              <Alert size="sm" color="danger">
+                {this.props.errorMessage}
+              </Alert>
+            )}
+            <h3 className={cx(s.mainTitle, "text-primary text-capitalize")}>Complete Your Seller Profile</h3>
+          </Widget>
+        </Form>
+      </div>
     );
   }
 }

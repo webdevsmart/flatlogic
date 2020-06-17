@@ -5,6 +5,8 @@ import { Provider } from 'react-redux'
 import ReduxThunk from 'redux-thunk'
 import * as serviceWorker from './serviceWorker';
 import axios from 'axios';
+import ApolloClient from 'apollo-boost';
+import { ApolloProvider } from '@apollo/react-hooks';
 
 import App from './components/App';
 import config from './config';
@@ -14,7 +16,7 @@ axios.defaults.baseURL = config.baseURLApi;
 axios.defaults.headers.common['Content-Type'] = "application/json";
 const token = localStorage.getItem('token');
 if (token) {
-    axios.defaults.headers.common['Authorization'] = "Bearer " + token;
+  axios.defaults.headers.common['Authorization'] = "Bearer " + token;
 }
 
 const store = createStore(
@@ -22,11 +24,18 @@ const store = createStore(
   applyMiddleware(ReduxThunk)
 );
 
+const client = new ApolloClient({
+  uri: config.api_url,
+});
+
 ReactDOM.render(
+  <ApolloProvider client={client}>
     <Provider store={store}>
-        <App />
-    </Provider>,
-    document.getElementById('root')
+      <App />
+    </Provider>
+  </ApolloProvider>
+  ,
+  document.getElementById('root')
 );
 
 // If you want your app to work offline and load faster, you can change
