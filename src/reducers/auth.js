@@ -23,7 +23,7 @@ export default function auth(state = {
           return Object.assign({}, state, {
               isFetching: false,
               isAuthenticated: false,
-              errorMessage: action.payload,
+              errorMessage: action.message,
           });
       case LOGOUT_SUCCESS:
           return Object.assign({}, state, {

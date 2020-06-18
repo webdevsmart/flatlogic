@@ -41,8 +41,8 @@
 }
 
 .topbarAvatar {
-  width: 40px;
-  height: 40px;
+  width: $topbarmenu-width;
+  height: $topbarmenu-height;
 }
 
 .headerIcon {
@@ -51,18 +51,13 @@
   position: relative;
 
   &:nth-child(n + 2) {
-    margin-left: 0.5rem;
+    margin-left: 1.5rem;
   }
 
   &:nth-child(2) {
     span {
       right: -1px;
     }
-  }
-
-  img {
-    max-height: 1.65rem;
-    width: 1.65rem;
   }
 
   span {

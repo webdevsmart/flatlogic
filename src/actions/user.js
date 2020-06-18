@@ -11,7 +11,7 @@ export const LOGOUT_SUCCESS = 'LOGOUT_SUCCESS';
 export const LOGOUT_FAILURE = 'LOGOUT_FAILURE';
 
 const MUTATION_LOGIN = gql`
-  mutation generateAccessToken($data: Object!) {
+  mutation generateAccessToken($data: LoginInput!) {
     generateAccessToken(data: $data)
   }
 `;
@@ -70,33 +70,49 @@ export function logoutUser() {
 }
 
 export function graphqlLoginUser(creds) {
+  const config = {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+    credentials: 'include',
+    body: JSON.stringify({
+      query: `mutation {
+                generateAccessToken(data: {email:"${creds.login}", password: "${creds.password}"})
+              }`,
+    }),
+  };
 
-  // return dispatch => {
-  //   // We dispatch requestLogin to kickoff the call to the API
-  //   dispatch(requestLogin(creds));
-  //   if (process.env.NODE_ENV === "development") {
-  //     return fetch('/login', config)
-  //       .then(response => response.json().then(user => ({ user, response })))
-  //       .then(({ user, response }) => {
-  //         if (!response.ok) {
-  //           // If there was a problem, we want to
-  //           // dispatch the error condition
-  //           dispatch(loginError(user.message));
-  //           return Promise.reject(user);
-  //         }
-  //         // in posts create new action and check http status, if malign logout
-  //         // If login was successful, set the token in local storage
-  //         localStorage.setItem('id_token', user.id_token);
-  //         // Dispatch the success action
-  //         dispatch(receiveLogin(user));
-  //         return Promise.resolve(user);
-  //       })
-  //       .catch(err => console.error('Error: ', err));
-  //   } else {
-  //     localStorage.setItem('id_token', appConfig.id_token);
-  //     dispatch(receiveLogin({ id_token: appConfig.id_token }))
-  //   }
-  // };
+  return dispatch => {
+    // We dispatch requestLogin to kickoff the call to the API
+    dispatch(requestLogin(creds));
+    if (process.env.NODE_ENV === "development") {
+      return fetch(appConfig.api_url, config)
+        .then(response => {
+          console.log(response);
+        })
+        .then(({ user, response }) => {
+          if (!response.ok) {
+            // If there was a problem, we want to
+            // dispatch the error condition
+            dispatch(loginError(user.message));
+            return Promise.reject(user);
+          }
+          // in posts create new action and check http status, if malign logout
+          // If login was successful, set the token in local storage
+          localStorage.setItem('id_token', user.id_token);
+          // Dispatch the success action
+          dispatch(receiveLogin(user));
+          return Promise.resolve(user);
+        })
+        .catch(err => {
+          console.error('Error: ', err);
+          console.log(err.message);
+          dispatch(loginError(err.message));
+        });
+    } else {
+      localStorage.setItem('id_token', appConfig.id_token);
+      dispatch(receiveLogin({ id_token: appConfig.id_token }))
+    }
+  };
 }
 
 export function loginUser(creds) {
@@ -112,7 +128,10 @@ export function loginUser(creds) {
     dispatch(requestLogin(creds));
     if (process.env.NODE_ENV === "development") {
       return fetch('/login', config)
-        .then(response => response.json().then(user => ({ user, response })))
+        .then(response => {
+          // console.log("response", response);
+          return response.json().then(user => ({ user, response }))
+        })
         .then(({ user, response }) => {
           if (!response.ok) {
             // If there was a problem, we want to
@@ -127,7 +146,11 @@ export function loginUser(creds) {
           dispatch(receiveLogin(user));
           return Promise.resolve(user);
         })
-        .catch(err => console.error('Error: ', err));
+        .catch(err => {
+          console.error('Error: ', err);
+          console.log('message', err.message);
+          dispatch(loginError(err.message));
+        });
     } else {
       localStorage.setItem('id_token', appConfig.id_token);
       dispatch(receiveLogin({ id_token: appConfig.id_token }))

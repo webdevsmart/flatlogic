@@ -17,10 +17,14 @@ import {
   InputGroupAddon,
 } from 'reactstrap';
 import MenuIcon from '@material-ui/icons/Menu';
+import MailIcon from '@material-ui/icons/Mail';
+import AppsIcon from '@material-ui/icons/Apps';
+import NotificationsIcon from '@material-ui/icons/Notifications';
 
 import Icon from '../Icon';
 import photo from '../../images/photo.jpg';
 import s from './Topbar.module.scss';
+import TopbarMenu from './TopbarMenu/TopbarMenu';
 
 import { logoutUser } from '../../actions/user';
 
@@ -58,25 +62,26 @@ class Topbar extends React.Component {
         </Nav>
         <Nav>
           <NavItem className={cx('', s.headerIcon)}>
-            <Button>
+            <TopbarMenu>
+              <MailIcon />
+            </TopbarMenu>
+            {/* <Button>
               <Icon glyph="mail"/>
               <span>8</span>
-            </Button>
+            </Button> */}
           </NavItem>
           <NavItem className={cx('', s.headerIcon)}>
-            <Button>
+            <TopbarMenu>
+              <AppsIcon />
+            </TopbarMenu>
+            {/* <Button>
               <Icon glyph="notification"/>
               <span>13</span>
-            </Button>
+            </Button> */}
           </NavItem>
-          <NavItem className={cx('', s.headerIcon)}>
-            <Button>
-              <Icon glyph="settings"/>
-            </Button>
-          </NavItem>
-          <Dropdown isOpen={isOpen} toggle={this.toggleDropdown} direction="down">
-            <DropdownToggle nav>
-              <img className={cx('rounded-circle mr-sm', s.topbarAvatar)} src={photo} alt="User" />
+          <Dropdown isOpen={isOpen} toggle={this.toggleDropdown} direction="down" className="ml-4">
+            <DropdownToggle nav className="p-0">
+              <img className={cx('rounded-circle mr-sm border border-secondary', s.topbarAvatar)} src={photo} alt="User" />
             </DropdownToggle>
             <DropdownMenu style={{width: '100%', left: 'auto', right: '0'}}>
               <DropdownItem>
@@ -90,6 +95,9 @@ class Topbar extends React.Component {
               </DropdownItem>
             </DropdownMenu>
           </Dropdown>
+          <NavItem className={cx('', s.headerIcon)}>
+            <NotificationsIcon />
+          </NavItem>
         </Nav>
       </div>
     );

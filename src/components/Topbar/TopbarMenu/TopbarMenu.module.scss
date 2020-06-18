@@ -1,0 +1,8 @@
+@import '../../../styles/app';
+
+.topbarMenu {
+  background-color: $topbarmenu-bg-color;
+  width: $topbarmenu-width;
+  height: $topbarmenu-height;
+  border: 0.8px solid $gray-400;
+}
