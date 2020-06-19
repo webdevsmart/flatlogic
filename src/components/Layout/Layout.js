@@ -35,6 +35,12 @@ import Profile from '../../pages/profile'
 import Privacy from '../../pages/privacy'
 import Topbar from '../Topbar/Topbar';
 import SellerInfo from '../../pages/seller-info/SellerInfo';
+import ImportProducts from '../../pages/products/import-products/ImportProducts';
+import ManageProducts from '../../pages/products/manage-products/ManageProducts';
+import ManageLivestream from '../../pages/products/manage-livestream/ManageLivestream';
+import Orders from '../../pages/order-management/orders/Orders';
+import Invoices from '../../pages/order-management/invoices/Invoices';
+import Shipments from '../../pages/shipment-management/shipments/Shipments';
 
 class Layout extends React.Component {
   constructor(props) {
@@ -76,6 +82,18 @@ class Layout extends React.Component {
 
               {/* Seller Profile */}
               <Route path="/app/seller-info" exact component={SellerInfo} />
+
+              {/* Products */}
+              <Route path="/app/products/import-products" exact component={ImportProducts} />
+              <Route path="/app/products/manage-products" exact component={ManageProducts} />
+              <Route path="/app/products/manage-livestream" exact component={ManageLivestream} />
+
+              {/* Order Management */}
+              <Route path="/app/order-management/orders" exact component={Orders} />
+              <Route path="/app/order-management/invoices" exact component={Invoices} />
+
+              {/* Shipment Management */}
+              <Route path="/app/shipment-management/shipments" exact component={Shipments} />
 
               <Route component={NotFound} />
             </Switch>

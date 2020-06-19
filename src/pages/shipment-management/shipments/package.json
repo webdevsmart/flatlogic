@@ -1,0 +1,6 @@
+{
+  "name": "shipments",
+  "version": "0.0.0",
+  "private": true,
+  "main": "./Shipments.js"
+}

@@ -1,0 +1,6 @@
+{
+  "name": "manage-products",
+  "version": "0.0.0",
+  "private": true,
+  "main": "./ManageProducts.js"
+}
