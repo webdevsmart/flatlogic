@@ -11,12 +11,13 @@ import {
   Col,
   Form
 } from 'reactstrap';
-import s from './Signup.module.scss';
-import Widget from '../../components/Widget';
-import Footer from "../../components/Footer";
-import { loginUser } from '../../actions/user';
 import jwt from 'jsonwebtoken';
-import config from '../../config'
+
+import s from './Signup.module.scss';
+import Widget from '../../../components/Widget';
+import Footer from "../../../components/Footer";
+import { loginUser } from '../../../actions/user';
+import config from '../../../config'
 
 class Signup extends React.Component {
   static propTypes = {
@@ -47,8 +48,8 @@ class Signup extends React.Component {
     super(props);
 
     this.state = {
-      login: 'user',
-      password: 'password',
+      login: '',
+      password: '',
     };
   }
 

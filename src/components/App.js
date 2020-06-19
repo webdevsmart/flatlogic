@@ -13,7 +13,8 @@ import ErrorPage from '../pages/error';
 
 import '../styles/theme.scss';
 import LayoutComponent from '../components/Layout';
-import Login from '../pages/login';
+import Login from '../pages/auth/login';
+import Signup from '../pages/auth/signup';
 import Register from '../pages/register';
 import { logoutUser } from '../actions/user';
 
@@ -47,6 +48,7 @@ class App extends React.PureComponent {
             <PrivateRoute path="/app" dispatch={this.props.dispatch} component={LayoutComponent} />
             <Route path="/register" exact component={Register} />
             <Route path="/login" exact component={Login} />
+            <Route path="/signup" exact component={Signup} />
             <Route path="/error" exact component={ErrorPage} />
           </Switch>
         </HashRouter>

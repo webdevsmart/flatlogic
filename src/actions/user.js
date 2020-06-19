@@ -1,5 +1,4 @@
 import gql from 'graphql-tag';
-import { useMutation } from '@apollo/react-hooks';
 
 import appConfig from '../config';
 
@@ -16,12 +15,11 @@ const MUTATION_LOGIN = gql`
   }
 `;
 
-function requestLogin(creds) {
+export function requestLogin() {
   return {
     type: LOGIN_REQUEST,
     isFetching: true,
     isAuthenticated: false,
-    creds,
   };
 }
 
@@ -30,11 +28,11 @@ export function receiveLogin(user) {
     type: LOGIN_SUCCESS,
     isFetching: false,
     isAuthenticated: true,
-    id_token: user.id_token,
+    id_token: user.generateAccessToken,
   };
 }
 
-function loginError(message) {
+export function loginError(message) {
   return {
     type: LOGIN_FAILURE,
     isFetching: false,
@@ -43,7 +41,7 @@ function loginError(message) {
   };
 }
 
-function requestLogout() {
+export function requestLogout() {
   return {
     type: LOGOUT_REQUEST,
     isFetching: true,
@@ -66,52 +64,6 @@ export function logoutUser() {
     localStorage.removeItem('id_token');
     document.cookie = 'id_token=;expires=Thu, 01 Jan 1970 00:00:01 GMT;';
     dispatch(receiveLogout());
-  };
-}
-
-export function graphqlLoginUser(creds) {
-  const config = {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-    credentials: 'include',
-    body: JSON.stringify({
-      query: `mutation {
-                generateAccessToken(data: {email:"${creds.login}", password: "${creds.password}"})
-              }`,
-    }),
-  };
-
-  return dispatch => {
-    // We dispatch requestLogin to kickoff the call to the API
-    dispatch(requestLogin(creds));
-    if (process.env.NODE_ENV === "development") {
-      return fetch(appConfig.api_url, config)
-        .then(response => {
-          console.log(response);
-        })
-        .then(({ user, response }) => {
-          if (!response.ok) {
-            // If there was a problem, we want to
-            // dispatch the error condition
-            dispatch(loginError(user.message));
-            return Promise.reject(user);
-          }
-          // in posts create new action and check http status, if malign logout
-          // If login was successful, set the token in local storage
-          localStorage.setItem('id_token', user.id_token);
-          // Dispatch the success action
-          dispatch(receiveLogin(user));
-          return Promise.resolve(user);
-        })
-        .catch(err => {
-          console.error('Error: ', err);
-          console.log(err.message);
-          dispatch(loginError(err.message));
-        });
-    } else {
-      localStorage.setItem('id_token', appConfig.id_token);
-      dispatch(receiveLogin({ id_token: appConfig.id_token }))
-    }
   };
 }
 

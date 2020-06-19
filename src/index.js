@@ -6,7 +6,7 @@ import ReduxThunk from 'redux-thunk'
 import * as serviceWorker from './serviceWorker';
 import axios from 'axios';
 import ApolloClient from 'apollo-boost';
-import { ApolloProvider } from '@apollo/react-hooks';
+import { ApolloProvider } from 'react-apollo';
 
 import App from './components/App';
 import config from './config';
