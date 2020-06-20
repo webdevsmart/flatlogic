@@ -27,7 +27,8 @@
  
  $line-height-computed: 1.5rem;
  
- $font-weight-thin: 300;
+ $font-weight-thin: 100;
+ $font-weight-light: 300;
  $font-weight-normal: 400;
  $font-weight-semi-bold: 600;
  $font-weight-bold: 700;
@@ -63,7 +64,7 @@
 
  $brand-primary:         #00BCD4 !default; 
  $brand-secondary:       #0097ab !default;
- $brand-success:         #1ab394 !default;
+ $brand-success:         #00796B !default;
  $brand-info:            #5d80f9 !default;
  $brand-warning:         #f3c363 !default;
  $brand-danger:          #eb3349 !default;
@@ -161,6 +162,9 @@
  $sidebar-bg-color: $gray-200;
  $sidebar-color: #4d4d4d;
  
+ $footer-height: 72px;
+ $footer-bg-color: #f2fdff;
+
  $breadcrumb-separator: '>';
  $breadcrumb-padding-horizontal: 0;
  $breadcrumb-bg: transparent;

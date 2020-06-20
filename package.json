@@ -18,6 +18,7 @@
     "@typescript-eslint/eslint-plugin": "^2.2.0",
     "@typescript-eslint/parser": "^2.2.0",
     "apollo-boost": "^0.4.9",
+    "apollo-upload-client": "^13.0.0",
     "awesome-bootstrap-checkbox": "^1.0.1",
     "axios": "^0.19.0",
     "babel-eslint": "10.0.3",

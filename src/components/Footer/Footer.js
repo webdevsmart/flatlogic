@@ -27,13 +27,12 @@ class Footer extends React.Component {
     return (
       <footer className={cx(s.root, this.props.className)}>
         <div className={s.container}>
-          <span>© 2020 &nbsp;Shoclef LLC </span>
-          <span className={s.spacer}>·</span>
-          <Link to="/app/tos">Terms of Service</Link>
-          <span className={s.spacer}>·</span>
-          <Link to="/app/privacy">Privacy Policy</Link>
-          <span className={s.spacer}>·</span>
-          <Link to="/app/not-found">Support</Link>
+          <span className={s.spacer}></span>
+          <Link to="/app/privacy-policy">Privacy Policy</Link>
+          <span className={s.spacer}></span>
+          <Link to="/app/terms-conditions">Terms &amp; Conditions</Link>
+          <span className={s.spacer}></span>
+          <Link to="/app/download-app">Download App</Link>
         </div>
       </footer>
     );

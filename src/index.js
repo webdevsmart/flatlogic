@@ -7,6 +7,7 @@ import * as serviceWorker from './serviceWorker';
 import axios from 'axios';
 import ApolloClient from 'apollo-boost';
 import { ApolloProvider } from 'react-apollo';
+import { createUploadLink } from 'apollo-upload-client';
 
 import App from './components/App';
 import config from './config';
@@ -24,6 +25,7 @@ const store = createStore(
   applyMiddleware(ReduxThunk)
 );
 
+const uploadLink = createUploadLink({ uri: 'http://localhost:4000/graphql' });
 const client = new ApolloClient({
   uri: config.api_url,
 });
