@@ -11,7 +11,7 @@ import s from './Sidebar.module.scss';
 
 const Sidebar = () => (
   <nav className={cx(s.root, "border-right border-primary")}>
-    <header className={cx(s.sidebarHome, "d-flex border-bottom border-secondary")}>
+    <header className={cx(s.sidebarHome, "border-bottom border-secondary")}>
       <NavLink to="/app/seller-info" className="menu-item-home d-flex w-100 align-items-center justify-content-between fw-roboto-regular fs-sm" activeClassName="active" exact>
         <div className="d-flex">
           <HomeIcon fontSize="small" className="mr-2"/>

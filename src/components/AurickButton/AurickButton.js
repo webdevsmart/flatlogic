@@ -57,7 +57,7 @@ class AurickButton extends React.Component {
     } else if (buttonWidth == "custom") {
     }
     return (
-      <Button color={color} className={cx(s.aurickButton, className)} style={{'width': width, 'height': height, 'font-size': fontSize}}>
+      <Button color={color} className={cx(s.aurickButton, className)} style={{'width': width, 'height': height, 'fontSize': fontSize}}>
         {caption}
       </Button>
     );

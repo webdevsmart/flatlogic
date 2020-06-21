@@ -19,8 +19,8 @@ import Widget from '../../components/Widget';
 import s from './SellerInfo.module.scss';
 
 const UPLOAD_FILE = gql`
-  mutation($file: Upload!) {
-    uploadSingleFile(file: $file) {
+  mutation uploadAsset($file: Upload!) {
+    uploadAsset(file: $file) {
       path
     }
   }`;
@@ -53,11 +53,31 @@ class SellerInfo extends Component {
 
   render() {
     return (
+      
       <div className={s.root}>
+        <Row>
+              <Mutation mutation={UPLOAD_FILE}>
+                {(singleUpload, { data, loading }) => {
+                  console.log(data);
+                  return (
+                    <form onSubmit={() => { console.log("Submitted") }} encType={'multipart/form-data'}>
+                      <input name={'document'} type={'file'} onChange={
+                        ({ target: { files } }) => {
+                          const file = files[0];
+                          file && singleUpload({ variables: { file: file } }) 
+                        }
+                      } />
+                      {loading && <p>Loading.....</p>}
+                    </form>
+                  );
+                }}
+              </Mutation>
+            </Row>
         <Form onSubmit={this.saveChanges}>
           <Widget className={cx(s.formData, "fs-sm")}>
-            <h3 className={cx(s.mainTitle, "text-primary text-capitalize")}>Complete Your Seller Profile</h3>
+            <h3 className={cx(s.mainTitle, "text-capitalize ")}>Complete Your Seller Profile</h3>
 
+            
             {/* {this.props.errorMessage && (
               <Alert size="sm" color="danger">
                 {this.props.errorMessage}
@@ -77,11 +97,11 @@ class SellerInfo extends Component {
                   </FormGroup>
                 </Col>
                 <Col md={6} sm={12}>
-                  <FormGroup as={Col}>
+                  <FormGroup>
                     <Label>Email Address</Label>
                     <Input
                       className="rounded"
-                      type="text"
+                      type="email"
                       required
                       name="email"
                     />
@@ -101,11 +121,11 @@ class SellerInfo extends Component {
                   </FormGroup>
                 </Col>
                 <Col md={6} sm={12}>
-                  <FormGroup as={Col}>
+                  <FormGroup>
                     <Label>Password</Label>
                     <Input
                       className="rounded"
-                      type="text"
+                      type="password"
                       required
                       name="password"
                     />

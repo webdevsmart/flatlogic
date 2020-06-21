@@ -132,6 +132,7 @@ class Login extends React.Component {
                       })
                       .then(res => res.data)
                       .then(data => {
+                        console.log("token: ", data.generateAccessToken);
                         localStorage.setItem('id_token', data.generateAccessToken);
                         this.props.dispatch(receiveLogin(data));
                       })
@@ -224,7 +225,6 @@ class Login extends React.Component {
             {/* </Col> */}
           </div>
         </Row>
-        <Footer className="text-center" />
       </div>
     );
   }

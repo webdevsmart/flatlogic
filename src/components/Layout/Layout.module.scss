@@ -5,6 +5,7 @@
 }
 
 .wrap {
+  background-color: $body-bg;
   min-height: 100%;
   position: absolute;
   left: 0;
@@ -30,5 +31,4 @@
   min-height: 100%;
   // 20px for footer height
   // padding: #{$navbar-height + $content-padding-vertical} $content-padding-horizontal ($content-padding-vertical + 20px);
-  background-color: $body-bg;
 }
