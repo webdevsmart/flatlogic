@@ -13,6 +13,7 @@ import {
 } from 'reactstrap';
 import { Mutation } from 'react-apollo';
 import gql from 'graphql-tag';
+import PhotoCameraIcon from '@material-ui/icons/PhotoCamera';
 
 import AurickButton from '../../components/AurickButton';
 import Widget from '../../components/Widget';
@@ -21,63 +22,80 @@ import s from './SellerInfo.module.scss';
 const UPLOAD_FILE = gql`
   mutation uploadAsset($file: Upload!) {
     uploadAsset(file: $file) {
-      path
+      path,
+      url
     }
   }`;
 
 class SellerInfo extends Component {
+
+  constructor(props) {
+    super(props);
+    this.uploadedImage = React.createRef();
+    this.imageUploader = React.createRef();
+  }
+
   saveChanges = (e) => {
     this.props.dispatch(
     );
     e.preventDefault();
   }
 
-  handleChange = async (event, mutation) => {
-    const {
-      target: {
-        validity,
-        files: [file],
-      }
-    } = event;
-
-    if (validity.valid) {
-      // Call graphql API
-      const { data: { uploadSingleFile } } = await mutation({
-        mutation: UPLOAD_FILE,
-        variables: { file },
-        fetchPolicy: 'no-cache',
-      });
-      // Use uploadSingleFile response
-    }
-  };
+  uploadImage = (e) => {
+    e.preventDefault();
+    this.imageUploader.current.click();
+  }
 
   render() {
     return (
-      
+
       <div className={s.root}>
-        <Row>
-              <Mutation mutation={UPLOAD_FILE}>
-                {(singleUpload, { data, loading }) => {
-                  console.log(data);
-                  return (
-                    <form onSubmit={() => { console.log("Submitted") }} encType={'multipart/form-data'}>
-                      <input name={'document'} type={'file'} onChange={
-                        ({ target: { files } }) => {
-                          const file = files[0];
-                          file && singleUpload({ variables: { file: file } }) 
-                        }
-                      } />
-                      {loading && <p>Loading.....</p>}
-                    </form>
-                  );
-                }}
-              </Mutation>
-            </Row>
         <Form onSubmit={this.saveChanges}>
           <Widget className={cx(s.formData, "fs-sm")}>
-            <h3 className={cx(s.mainTitle, "text-capitalize ")}>Complete Your Seller Profile</h3>
+            <h3 className={cx(s.mainTitle, "text-capitalize")}>Complete Your Seller Profile</h3>
+            <Mutation mutation={UPLOAD_FILE}>
+              {(uploadFile, { data, loading }) => {
+                if (data) {
+                  const {uploadAsset} = data;
+                  this.uploadedImage.current.src = uploadAsset.url;
+                }
 
-            
+                return (
+                  <div className={s.sellerPhoto}>
+                    <div className="text-center">
+                      <input
+                        name={'document'}
+                        accept="image/*"
+                        ref={this.imageUploader}
+                        type={'file'}
+                        onChange={
+                          ({ target: { files } }) => {
+                            const file = files[0];
+                            if (file) {
+                              // const reader = new FileReader();
+                              // const { current } = this.uploadedImage;
+                              // current.file = file;
+                              // reader.onload = e => {
+                              //   current.src = e.target.result;
+                              // };
+                              uploadFile({ variables: { file: file } })
+                            }
+                          }
+                        }
+                      />
+                      <div className="d-flex justify-content-center mb-2">
+                        <img ref={this.uploadedImage} className="bg-white" />
+                      </div>
+                      <div className="d-inline-flex justify-content-center align-items-center cursor-pointer" onClick={this.uploadImage}>
+                        <PhotoCameraIcon className="mr-2"/>
+                        {loading && <span>Loading.....</span>}
+                        {!loading && <span className="text-secondary">Add Profile Image</span>}
+                      </div>
+                    </div>
+                  </div>
+                );
+              }}
+            </Mutation>
             {/* {this.props.errorMessage && (
               <Alert size="sm" color="danger">
                 {this.props.errorMessage}

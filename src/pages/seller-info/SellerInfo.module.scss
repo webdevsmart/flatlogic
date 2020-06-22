@@ -54,3 +54,18 @@
     }
   }
 }
+
+.sellerPhoto {
+  margin-bottom: 1.25rem;
+
+  input {
+    display: none;
+  }
+
+  img {
+    border-radius: 50%;
+    width: 200px;
+    height: 200px;
+    border: 1px solid rgba(black, .36);
+  }
+}

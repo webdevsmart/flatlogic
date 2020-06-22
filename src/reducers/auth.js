@@ -2,7 +2,7 @@ import {
   LOGIN_REQUEST, LOGIN_SUCCESS, LOGIN_FAILURE, LOGOUT_SUCCESS,
 } from '../actions/user';
 
-const token = localStorage.getItem('token');
+const token = localStorage.getItem('id_token');
 export default function auth(state = {
   isFetching: false,
   isAuthenticated: !!token,
