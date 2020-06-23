@@ -16,7 +16,7 @@ import {
 
 import s from './AurickButton.module.scss';
 
-class AurickButton extends React.Component {
+class AurickButton extends Button {
   /* eslint-disable */
   static propTypes = {
     caption: PropTypes.node.isRequired,
@@ -26,6 +26,7 @@ class AurickButton extends React.Component {
     buttonWidth: PropTypes.string,
     fontSize: PropTypes.number,
     className: PropTypes.string,
+    onClick: PropTypes.func,
   };
   /* eslint-enable */
 
@@ -43,7 +44,7 @@ class AurickButton extends React.Component {
   }
 
   render() {
-    let { className, width, height, caption, buttonWidth, color, fontSize } = this.props;
+    let { className, width, height, caption, buttonWidth, color, fontSize, onClick } = this.props;
     
     if (buttonWidth == "normal") {
       width = 232;
@@ -57,7 +58,7 @@ class AurickButton extends React.Component {
     } else if (buttonWidth == "custom") {
     }
     return (
-      <Button color={color} className={cx(s.aurickButton, className)} style={{'width': width, 'height': height, 'fontSize': fontSize}}>
+      <Button color={color} className={cx(s.aurickButton, className)} style={{'width': width, 'height': height, 'fontSize': fontSize}} onClick={onClick}>
         {caption}
       </Button>
     );

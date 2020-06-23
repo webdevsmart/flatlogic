@@ -1,0 +1,6 @@
+{
+  "name": "csv-upload-modal",
+  "version": "0.0.0",
+  "private": true,
+  "main": "./CsvUploadModal.js"
+}
