@@ -41,6 +41,7 @@ import ManageLivestream from '../../pages/products/manage-livestream/ManageLives
 import Orders from '../../pages/order-management/orders/Orders';
 import Invoices from '../../pages/order-management/invoices/Invoices';
 import Shipments from '../../pages/shipment-management/shipments/Shipments';
+import ConfirmCsvProducts from '../../pages/products/import-products/confirm-csv-products/ConfirmCsvProducts';
 
 class Layout extends React.Component {
   constructor(props) {
@@ -85,6 +86,7 @@ class Layout extends React.Component {
 
               {/* Products */}
               <Route path="/app/products/import-products" exact component={ImportProducts} />
+              <Route path="/app/products/import-products/confirm-csv-products" exact component={ConfirmCsvProducts} />
               <Route path="/app/products/manage-products" exact component={ManageProducts} />
               <Route path="/app/products/manage-livestream" exact component={ManageLivestream} />
 

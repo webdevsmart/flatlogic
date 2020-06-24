@@ -1,0 +1,28 @@
+
+@import '../../../../styles/app';
+
+.root {
+  padding-left: 1.5rem;
+  padding-right: 2rem;
+  padding-top: 1.5rem;
+}
+
+.mainTitle {
+  color: rgba(black, 0.38);
+  margin-bottom: 1.25rem;
+}
+
+.formData {
+  padding-left: 1.5rem;
+  padding-right: 2rem;
+  padding-top: 1.25rem;
+  padding-bottom: 1.5rem;
+  color: $gray-800;
+  background-color: $body-bg;
+  margin: 0;
+
+  input,textarea {
+    background-color: $gray-100;
+    color: rgba(black, .6);
+  }
+}

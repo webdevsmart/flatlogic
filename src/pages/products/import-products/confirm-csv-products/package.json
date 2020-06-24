@@ -1,0 +1,6 @@
+{
+  "name": "confirm-csv-products",
+  "version": "0.0.0",
+  "private": true,
+  "main": "./ConfirmCsvProducts.js"
+}
